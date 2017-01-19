@@ -375,6 +375,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="bootstrap\" />
     <Folder Include="build\" />
+    <Folder Include="Content\AdminLTE\img\" />
     <Folder Include="Content\AdminLTE\js\" />
     <Folder Include="pages\" />
     <Folder Include="plugins\" />
