@@ -1,0 +1,1321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SISMAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Barrio">
+          <Key>
+            <PropertyRef Name="CodBarrio" />
+          </Key>
+          <Property Name="CodBarrio" Type="int" Nullable="false" />
+          <Property Name="NomBarrio" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bitacora">
+          <Key>
+            <PropertyRef Name="CodBitac" />
+          </Key>
+          <Property Name="CodBitac" Type="int" Nullable="false" />
+          <Property Name="FechaBitac" Type="datetime" Nullable="false" />
+          <Property Name="Hora" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Tabla" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Registro" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodTransac" Type="int" Nullable="false" />
+          <Property Name="CodUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calle">
+          <Key>
+            <PropertyRef Name="CodCalle" />
+          </Key>
+          <Property Name="CodCalle" Type="int" Nullable="false" />
+          <Property Name="CodBarrio" Type="int" Nullable="false" />
+          <Property Name="NomCalle" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatServicio">
+          <Key>
+            <PropertyRef Name="CodCategoria" />
+          </Key>
+          <Property Name="CodCategoria" Type="int" Nullable="false" />
+          <Property Name="NomCategoria" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CobroServicio">
+          <Key>
+            <PropertyRef Name="CodCobro" />
+          </Key>
+          <Property Name="CodCobro" Type="int" Nullable="false" />
+          <Property Name="MontoTotal" Type="money" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Glosa" Type="nvarchar" MaxLength="255" />
+          <Property Name="CodUsuario" Type="int" Nullable="false" />
+          <Property Name="codContrato" Type="int" Nullable="false" />
+          <Property Name="CodLectura" Type="int" />
+        </EntityType>
+        <EntityType Name="Contrato">
+          <Key>
+            <PropertyRef Name="CodContrato" />
+          </Key>
+          <Property Name="CodContrato" Type="int" Nullable="false" />
+          <Property Name="CodFijo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+          <Property Name="DireccionNro" Type="nvarchar" MaxLength="100" />
+          <Property Name="NroDpto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observacion" Type="nvarchar" MaxLength="100" />
+          <Property Name="CodMedidor" Type="int" Nullable="false" />
+          <Property Name="CodCalle" Type="int" Nullable="false" />
+          <Property Name="CodCategoria" Type="int" Nullable="false" />
+          <Property Name="CodUsuario" Type="int" Nullable="false" />
+          <Property Name="CodSocio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleCobro">
+          <Key>
+            <PropertyRef Name="CodCobro" />
+            <PropertyRef Name="CodServicio" />
+          </Key>
+          <Property Name="CodCobro" Type="int" Nullable="false" />
+          <Property Name="CodServicio" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoServicio">
+          <Key>
+            <PropertyRef Name="CodEstado" />
+          </Key>
+          <Property Name="CodEstado" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="CodContrato" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lectura">
+          <Key>
+            <PropertyRef Name="CodLectura" />
+          </Key>
+          <Property Name="CodLectura" Type="int" Nullable="false" />
+          <Property Name="ValorLectura" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="CodMedidor" Type="int" Nullable="false" />
+          <Property Name="CodPeriodo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medidor">
+          <Key>
+            <PropertyRef Name="CodMedidor" />
+          </Key>
+          <Property Name="CodMedidor" Type="int" Nullable="false" />
+          <Property Name="NroSerie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Periodo">
+          <Key>
+            <PropertyRef Name="CodPeriodo" />
+          </Key>
+          <Property Name="CodPeriodo" Type="int" Nullable="false" />
+          <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+          <Property Name="FechaFin" Type="datetime" Nullable="false" />
+          <Property Name="CantidadDias" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrecioServicio">
+          <Key>
+            <PropertyRef Name="CodCategoria" />
+            <PropertyRef Name="CodServicio" />
+          </Key>
+          <Property Name="CodCategoria" Type="int" Nullable="false" />
+          <Property Name="CodServicio" Type="int" Nullable="false" />
+          <Property Name="PrecioUnit" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Privilegio">
+          <Key>
+            <PropertyRef Name="CodPrivil" />
+          </Key>
+          <Property Name="CodPrivil" Type="int" Nullable="false" />
+          <Property Name="DesPriv" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="CodServicio" />
+          </Key>
+          <Property Name="CodServicio" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Socio">
+          <Key>
+            <PropertyRef Name="CodSocio" />
+          </Key>
+          <Property Name="CodSocio" Type="int" Nullable="false" />
+          <Property Name="NomSocio" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Paterno" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Materno" Type="nvarchar" MaxLength="50" />
+          <Property Name="CI" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="CodTipoUsu" />
+          </Key>
+          <Property Name="CodTipoUsu" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transaccion">
+          <Key>
+            <PropertyRef Name="CodTransac" />
+          </Key>
+          <Property Name="CodTransac" Type="int" Nullable="false" />
+          <Property Name="DesTransac" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="CodUsuario" />
+          </Key>
+          <Property Name="CodUsuario" Type="int" Nullable="false" />
+          <Property Name="NomUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Paterno" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Materno" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="EstadoUsuario" Type="int" Nullable="false" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodTipoUsu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuarioPrivilegio">
+          <Key>
+            <PropertyRef Name="CodUsuario" />
+            <PropertyRef Name="CodPrivil" />
+          </Key>
+          <Property Name="CodUsuario" Type="int" Nullable="false" />
+          <Property Name="CodPrivil" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Bitacora__CodUsu__38996AB5">
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="1" />
+          <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaccion">
+              <PropertyRef Name="CodTransac" />
+            </Principal>
+            <Dependent Role="Bitacora">
+              <PropertyRef Name="CodTransac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bitacora__CodUsu__398D8EEE">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="CodUsuario" />
+            </Principal>
+            <Dependent Role="Bitacora">
+              <PropertyRef Name="CodUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calle__CodBarrio__0519C6AF">
+          <End Role="Barrio" Type="Self.Barrio" Multiplicity="1" />
+          <End Role="Calle" Type="Self.Calle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barrio">
+              <PropertyRef Name="CodBarrio" />
+            </Principal>
+            <Dependent Role="Calle">
+              <PropertyRef Name="CodBarrio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CobroServ__codCo__52593CB8">
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="1" />
+          <End Role="CobroServicio" Type="Self.CobroServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contrato">
+              <PropertyRef Name="CodContrato" />
+            </Principal>
+            <Dependent Role="CobroServicio">
+              <PropertyRef Name="codContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CobroServ__CodLe__534D60F1">
+          <End Role="Lectura" Type="Self.Lectura" Multiplicity="0..1" />
+          <End Role="CobroServicio" Type="Self.CobroServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lectura">
+              <PropertyRef Name="CodLectura" />
+            </Principal>
+            <Dependent Role="CobroServicio">
+              <PropertyRef Name="CodLectura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CobroServ__CodUs__5165187F">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="CobroServicio" Type="Self.CobroServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="CodUsuario" />
+            </Principal>
+            <Dependent Role="CobroServicio">
+              <PropertyRef Name="CodUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contrato__CodCal__3F466844">
+          <End Role="Calle" Type="Self.Calle" Multiplicity="1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calle">
+              <PropertyRef Name="CodCalle" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodCalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contrato__CodCat__403A8C7D">
+          <End Role="CatServicio" Type="Self.CatServicio" Multiplicity="1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatServicio">
+              <PropertyRef Name="CodCategoria" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contrato__CodSoc__3E52440B">
+          <End Role="Medidor" Type="Self.Medidor" Multiplicity="1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medidor">
+              <PropertyRef Name="CodMedidor" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodMedidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contrato__CodSoc__4222D4EF">
+          <End Role="Socio" Type="Self.Socio" Multiplicity="1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Socio">
+              <PropertyRef Name="CodSocio" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodSocio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contrato__CodUsu__412EB0B6">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="CodUsuario" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleCo__CodCo__5812160E">
+          <End Role="CobroServicio" Type="Self.CobroServicio" Multiplicity="1" />
+          <End Role="DetalleCobro" Type="Self.DetalleCobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CobroServicio">
+              <PropertyRef Name="CodCobro" />
+            </Principal>
+            <Dependent Role="DetalleCobro">
+              <PropertyRef Name="CodCobro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleCo__CodSe__59063A47">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+          <End Role="DetalleCobro" Type="Self.DetalleCobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="CodServicio" />
+            </Principal>
+            <Dependent Role="DetalleCobro">
+              <PropertyRef Name="CodServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EstadoSer__CodCo__46E78A0C">
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="1" />
+          <End Role="EstadoServicio" Type="Self.EstadoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contrato">
+              <PropertyRef Name="CodContrato" />
+            </Principal>
+            <Dependent Role="EstadoServicio">
+              <PropertyRef Name="CodContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lectura__CodMedi__4BAC3F29">
+          <End Role="Medidor" Type="Self.Medidor" Multiplicity="1" />
+          <End Role="Lectura" Type="Self.Lectura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medidor">
+              <PropertyRef Name="CodMedidor" />
+            </Principal>
+            <Dependent Role="Lectura">
+              <PropertyRef Name="CodMedidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lectura__CodPeri__4CA06362">
+          <End Role="Periodo" Type="Self.Periodo" Multiplicity="1" />
+          <End Role="Lectura" Type="Self.Lectura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periodo">
+              <PropertyRef Name="CodPeriodo" />
+            </Principal>
+            <Dependent Role="Lectura">
+              <PropertyRef Name="CodPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrecioSer__CodCa__21B6055D">
+          <End Role="CatServicio" Type="Self.CatServicio" Multiplicity="1" />
+          <End Role="PrecioServicio" Type="Self.PrecioServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatServicio">
+              <PropertyRef Name="CodCategoria" />
+            </Principal>
+            <Dependent Role="PrecioServicio">
+              <PropertyRef Name="CodCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrecioSer__CodSe__22AA2996">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+          <End Role="PrecioServicio" Type="Self.PrecioServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="CodServicio" />
+            </Principal>
+            <Dependent Role="PrecioServicio">
+              <PropertyRef Name="CodServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__CodTipo__117F9D94">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="CodTipoUsu" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="CodTipoUsu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsuarioPr__CodPr__300424B4">
+          <End Role="Privilegio" Type="Self.Privilegio" Multiplicity="1" />
+          <End Role="UsuarioPrivilegio" Type="Self.UsuarioPrivilegio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privilegio">
+              <PropertyRef Name="CodPrivil" />
+            </Principal>
+            <Dependent Role="UsuarioPrivilegio">
+              <PropertyRef Name="CodPrivil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsuarioPr__CodUs__2F10007B">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="UsuarioPrivilegio" Type="Self.UsuarioPrivilegio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="CodUsuario" />
+            </Principal>
+            <Dependent Role="UsuarioPrivilegio">
+              <PropertyRef Name="CodUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SISMAModelStoreContainer">
+          <EntitySet Name="Barrio" EntityType="Self.Barrio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calle" EntityType="Self.Calle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatServicio" EntityType="Self.CatServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CobroServicio" EntityType="Self.CobroServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contrato" EntityType="Self.Contrato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleCobro" EntityType="Self.DetalleCobro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoServicio" EntityType="Self.EstadoServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lectura" EntityType="Self.Lectura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medidor" EntityType="Self.Medidor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Periodo" EntityType="Self.Periodo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrecioServicio" EntityType="Self.PrecioServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privilegio" EntityType="Self.Privilegio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Socio" EntityType="Self.Socio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transaccion" EntityType="Self.Transaccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioPrivilegio" EntityType="Self.UsuarioPrivilegio" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Bitacora__CodUsu__38996AB5" Association="Self.FK__Bitacora__CodUsu__38996AB5">
+            <End Role="Transaccion" EntitySet="Transaccion" />
+            <End Role="Bitacora" EntitySet="Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bitacora__CodUsu__398D8EEE" Association="Self.FK__Bitacora__CodUsu__398D8EEE">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Bitacora" EntitySet="Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calle__CodBarrio__0519C6AF" Association="Self.FK__Calle__CodBarrio__0519C6AF">
+            <End Role="Barrio" EntitySet="Barrio" />
+            <End Role="Calle" EntitySet="Calle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CobroServ__codCo__52593CB8" Association="Self.FK__CobroServ__codCo__52593CB8">
+            <End Role="Contrato" EntitySet="Contrato" />
+            <End Role="CobroServicio" EntitySet="CobroServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CobroServ__CodLe__534D60F1" Association="Self.FK__CobroServ__CodLe__534D60F1">
+            <End Role="Lectura" EntitySet="Lectura" />
+            <End Role="CobroServicio" EntitySet="CobroServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CobroServ__CodUs__5165187F" Association="Self.FK__CobroServ__CodUs__5165187F">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="CobroServicio" EntitySet="CobroServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contrato__CodCal__3F466844" Association="Self.FK__Contrato__CodCal__3F466844">
+            <End Role="Calle" EntitySet="Calle" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contrato__CodCat__403A8C7D" Association="Self.FK__Contrato__CodCat__403A8C7D">
+            <End Role="CatServicio" EntitySet="CatServicio" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contrato__CodSoc__3E52440B" Association="Self.FK__Contrato__CodSoc__3E52440B">
+            <End Role="Medidor" EntitySet="Medidor" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contrato__CodSoc__4222D4EF" Association="Self.FK__Contrato__CodSoc__4222D4EF">
+            <End Role="Socio" EntitySet="Socio" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contrato__CodUsu__412EB0B6" Association="Self.FK__Contrato__CodUsu__412EB0B6">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleCo__CodCo__5812160E" Association="Self.FK__DetalleCo__CodCo__5812160E">
+            <End Role="CobroServicio" EntitySet="CobroServicio" />
+            <End Role="DetalleCobro" EntitySet="DetalleCobro" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleCo__CodSe__59063A47" Association="Self.FK__DetalleCo__CodSe__59063A47">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="DetalleCobro" EntitySet="DetalleCobro" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EstadoSer__CodCo__46E78A0C" Association="Self.FK__EstadoSer__CodCo__46E78A0C">
+            <End Role="Contrato" EntitySet="Contrato" />
+            <End Role="EstadoServicio" EntitySet="EstadoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lectura__CodMedi__4BAC3F29" Association="Self.FK__Lectura__CodMedi__4BAC3F29">
+            <End Role="Medidor" EntitySet="Medidor" />
+            <End Role="Lectura" EntitySet="Lectura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lectura__CodPeri__4CA06362" Association="Self.FK__Lectura__CodPeri__4CA06362">
+            <End Role="Periodo" EntitySet="Periodo" />
+            <End Role="Lectura" EntitySet="Lectura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrecioSer__CodCa__21B6055D" Association="Self.FK__PrecioSer__CodCa__21B6055D">
+            <End Role="CatServicio" EntitySet="CatServicio" />
+            <End Role="PrecioServicio" EntitySet="PrecioServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrecioSer__CodSe__22AA2996" Association="Self.FK__PrecioSer__CodSe__22AA2996">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="PrecioServicio" EntitySet="PrecioServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__CodTipo__117F9D94" Association="Self.FK__Usuario__CodTipo__117F9D94">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsuarioPr__CodPr__300424B4" Association="Self.FK__UsuarioPr__CodPr__300424B4">
+            <End Role="Privilegio" EntitySet="Privilegio" />
+            <End Role="UsuarioPrivilegio" EntitySet="UsuarioPrivilegio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsuarioPr__CodUs__2F10007B" Association="Self.FK__UsuarioPr__CodUs__2F10007B">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioPrivilegio" EntitySet="UsuarioPrivilegio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SISMAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Barrio">
+          <Key>
+            <PropertyRef Name="CodBarrio" />
+          </Key>
+          <Property Name="CodBarrio" Type="Int32" Nullable="false" />
+          <Property Name="NomBarrio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Calle" Relationship="Self.FK__Calle__CodBarrio__1273C1CD" FromRole="Barrio" ToRole="Calle" />
+        </EntityType>
+        <EntityType Name="Bitacora">
+          <Key>
+            <PropertyRef Name="CodBitac" />
+          </Key>
+          <Property Name="CodBitac" Type="Int32" Nullable="false" />
+          <Property Name="FechaBitac" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hora" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Tabla" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Registro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodTransac" Type="Int32" Nullable="false" />
+          <Property Name="CodUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Transaccion" Relationship="Self.FK__Bitacora__CodUsu__2F10007B" FromRole="Bitacora" ToRole="Transaccion" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Bitacora__CodUsu__300424B4" FromRole="Bitacora" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Calle">
+          <Key>
+            <PropertyRef Name="CodCalle" />
+          </Key>
+          <Property Name="CodCalle" Type="Int32" Nullable="false" />
+          <Property Name="CodBarrio" Type="Int32" Nullable="false" />
+          <Property Name="NomCalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Barrio" Relationship="Self.FK__Calle__CodBarrio__1273C1CD" FromRole="Calle" ToRole="Barrio" />
+          <NavigationProperty Name="Contrato" Relationship="Self.FK__Contrato__CodCal__33D4B598" FromRole="Calle" ToRole="Contrato" />
+        </EntityType>
+        <EntityType Name="CatServicio">
+          <Key>
+            <PropertyRef Name="CodCategoria" />
+          </Key>
+          <Property Name="CodCategoria" Type="Int32" Nullable="false" />
+          <Property Name="NomCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Contrato" Relationship="Self.FK__Contrato__CodCat__34C8D9D1" FromRole="CatServicio" ToRole="Contrato" />
+          <NavigationProperty Name="PrecioServicio" Relationship="Self.FK__PrecioSer__CodCa__21B6055D" FromRole="CatServicio" ToRole="PrecioServicio" />
+        </EntityType>
+        <EntityType Name="CobroServicio">
+          <Key>
+            <PropertyRef Name="CodCobro" />
+          </Key>
+          <Property Name="CodCobro" Type="Int32" Nullable="false" />
+          <Property Name="MontoTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Glosa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CodUsuario" Type="Int32" Nullable="false" />
+          <Property Name="codContrato" Type="Int32" Nullable="false" />
+          <Property Name="CodLectura" Type="Int32" />
+          <NavigationProperty Name="Contrato" Relationship="Self.FK__CobroServ__codCo__412EB0B6" FromRole="CobroServicio" ToRole="Contrato" />
+          <NavigationProperty Name="Lectura" Relationship="Self.FK__CobroServ__CodLe__4222D4EF" FromRole="CobroServicio" ToRole="Lectura" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__CobroServ__CodUs__403A8C7D" FromRole="CobroServicio" ToRole="Usuario" />
+          <NavigationProperty Name="DetalleCobro" Relationship="Self.FK__DetalleCo__CodCo__44FF419A" FromRole="CobroServicio" ToRole="DetalleCobro" />
+        </EntityType>
+        <EntityType Name="Contrato">
+          <Key>
+            <PropertyRef Name="CodContrato" />
+          </Key>
+          <Property Name="CodContrato" Type="Int32" Nullable="false" />
+          <Property Name="CodFijo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DireccionNro" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NroDpto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observacion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CodMedidor" Type="Int32" Nullable="false" />
+          <Property Name="CodCalle" Type="Int32" Nullable="false" />
+          <Property Name="CodCategoria" Type="Int32" Nullable="false" />
+          <Property Name="CodUsuario" Type="Int32" Nullable="false" />
+          <Property Name="CodSocio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Calle" Relationship="Self.FK__Contrato__CodCal__33D4B598" FromRole="Contrato" ToRole="Calle" />
+          <NavigationProperty Name="CatServicio" Relationship="Self.FK__Contrato__CodCat__34C8D9D1" FromRole="Contrato" ToRole="CatServicio" />
+          <NavigationProperty Name="CobroServicio" Relationship="Self.FK__CobroServ__codCo__412EB0B6" FromRole="Contrato" ToRole="CobroServicio" />
+          <NavigationProperty Name="Medidor" Relationship="Self.FK__Contrato__CodSoc__32E0915F" FromRole="Contrato" ToRole="Medidor" />
+          <NavigationProperty Name="Socio" Relationship="Self.FK__Contrato__CodSoc__36B12243" FromRole="Contrato" ToRole="Socio" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Contrato__CodUsu__35BCFE0A" FromRole="Contrato" ToRole="Usuario" />
+          <NavigationProperty Name="EstadoServicio" Relationship="Self.FK__EstadoSer__CodCo__398D8EEE" FromRole="Contrato" ToRole="EstadoServicio" />
+        </EntityType>
+        <EntityType Name="DetalleCobro">
+          <Key>
+            <PropertyRef Name="CodCobro" />
+            <PropertyRef Name="CodServicio" />
+          </Key>
+          <Property Name="CodCobro" Type="Int32" Nullable="false" />
+          <Property Name="CodServicio" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="CobroServicio" Relationship="Self.FK__DetalleCo__CodCo__44FF419A" FromRole="DetalleCobro" ToRole="CobroServicio" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK__DetalleCo__CodSe__45F365D3" FromRole="DetalleCobro" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="EstadoServicio">
+          <Key>
+            <PropertyRef Name="CodEstado" />
+          </Key>
+          <Property Name="CodEstado" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="CodContrato" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contrato" Relationship="Self.FK__EstadoSer__CodCo__398D8EEE" FromRole="EstadoServicio" ToRole="Contrato" />
+        </EntityType>
+        <EntityType Name="Lectura">
+          <Key>
+            <PropertyRef Name="CodLectura" />
+          </Key>
+          <Property Name="CodLectura" Type="Int32" Nullable="false" />
+          <Property Name="ValorLectura" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CodMedidor" Type="Int32" Nullable="false" />
+          <Property Name="CodPeriodo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CobroServicio" Relationship="Self.FK__CobroServ__CodLe__4222D4EF" FromRole="Lectura" ToRole="CobroServicio" />
+          <NavigationProperty Name="Medidor" Relationship="Self.FK__Lectura__CodMedi__3C69FB99" FromRole="Lectura" ToRole="Medidor" />
+          <NavigationProperty Name="Periodo" Relationship="Self.FK__Lectura__CodPeri__3D5E1FD2" FromRole="Lectura" ToRole="Periodo" />
+        </EntityType>
+        <EntityType Name="Medidor">
+          <Key>
+            <PropertyRef Name="CodMedidor" />
+          </Key>
+          <Property Name="CodMedidor" Type="Int32" Nullable="false" />
+          <Property Name="NroSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Contrato" Relationship="Self.FK__Contrato__CodSoc__32E0915F" FromRole="Medidor" ToRole="Contrato" />
+          <NavigationProperty Name="Lectura" Relationship="Self.FK__Lectura__CodMedi__3C69FB99" FromRole="Medidor" ToRole="Lectura" />
+        </EntityType>
+        <EntityType Name="Periodo">
+          <Key>
+            <PropertyRef Name="CodPeriodo" />
+          </Key>
+          <Property Name="CodPeriodo" Type="Int32" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CantidadDias" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lectura" Relationship="Self.FK__Lectura__CodPeri__3D5E1FD2" FromRole="Periodo" ToRole="Lectura" />
+        </EntityType>
+        <EntityType Name="PrecioServicio">
+          <Key>
+            <PropertyRef Name="CodCategoria" />
+            <PropertyRef Name="CodServicio" />
+          </Key>
+          <Property Name="CodCategoria" Type="Int32" Nullable="false" />
+          <Property Name="CodServicio" Type="Int32" Nullable="false" />
+          <Property Name="PrecioUnit" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="CatServicio" Relationship="Self.FK__PrecioSer__CodCa__21B6055D" FromRole="PrecioServicio" ToRole="CatServicio" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK__PrecioSer__CodSe__22AA2996" FromRole="PrecioServicio" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Privilegio">
+          <Key>
+            <PropertyRef Name="CodPrivil" />
+          </Key>
+          <Property Name="CodPrivil" Type="Int32" Nullable="false" />
+          <Property Name="DesPriv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.UsuarioPrivilegio" FromRole="Privilegio" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="CodServicio" />
+          </Key>
+          <Property Name="CodServicio" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DetalleCobro" Relationship="Self.FK__DetalleCo__CodSe__45F365D3" FromRole="Servicio" ToRole="DetalleCobro" />
+          <NavigationProperty Name="PrecioServicio" Relationship="Self.FK__PrecioSer__CodSe__22AA2996" FromRole="Servicio" ToRole="PrecioServicio" />
+        </EntityType>
+        <EntityType Name="Socio">
+          <Key>
+            <PropertyRef Name="CodSocio" />
+          </Key>
+          <Property Name="CodSocio" Type="Int32" Nullable="false" />
+          <Property Name="NomSocio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Materno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contrato" Relationship="Self.FK__Contrato__CodSoc__36B12243" FromRole="Socio" ToRole="Contrato" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="CodTipoUsu" />
+          </Key>
+          <Property Name="CodTipoUsu" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__CodTipo__1920BF5C" FromRole="TipoUsuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Transaccion">
+          <Key>
+            <PropertyRef Name="CodTransac" />
+          </Key>
+          <Property Name="CodTransac" Type="Int32" Nullable="false" />
+          <Property Name="DesTransac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Bitacora" Relationship="Self.FK__Bitacora__CodUsu__2F10007B" FromRole="Transaccion" ToRole="Bitacora" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="CodUsuario" />
+          </Key>
+          <Property Name="CodUsuario" Type="Int32" Nullable="false" />
+          <Property Name="NomUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Materno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EstadoUsuario" Type="Int32" Nullable="false" />
+          <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodTipoUsu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bitacora" Relationship="Self.FK__Bitacora__CodUsu__300424B4" FromRole="Usuario" ToRole="Bitacora" />
+          <NavigationProperty Name="CobroServicio" Relationship="Self.FK__CobroServ__CodUs__403A8C7D" FromRole="Usuario" ToRole="CobroServicio" />
+          <NavigationProperty Name="Contrato" Relationship="Self.FK__Contrato__CodUsu__35BCFE0A" FromRole="Usuario" ToRole="Contrato" />
+          <NavigationProperty Name="TipoUsuario" Relationship="Self.FK__Usuario__CodTipo__1920BF5C" FromRole="Usuario" ToRole="TipoUsuario" />
+          <NavigationProperty Name="Privilegio" Relationship="Self.UsuarioPrivilegio" FromRole="Usuario" ToRole="Privilegio" />
+        </EntityType>
+        <Association Name="FK__Calle__CodBarrio__1273C1CD">
+          <End Role="Barrio" Type="Self.Barrio" Multiplicity="1" />
+          <End Role="Calle" Type="Self.Calle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barrio">
+              <PropertyRef Name="CodBarrio" />
+            </Principal>
+            <Dependent Role="Calle">
+              <PropertyRef Name="CodBarrio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bitacora__CodUsu__2F10007B">
+          <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="1" />
+          <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaccion">
+              <PropertyRef Name="CodTransac" />
+            </Principal>
+            <Dependent Role="Bitacora">
+              <PropertyRef Name="CodTransac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bitacora__CodUsu__300424B4">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="CodUsuario" />
+            </Principal>
+            <Dependent Role="Bitacora">
+              <PropertyRef Name="CodUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contrato__CodCal__33D4B598">
+          <End Role="Calle" Type="Self.Calle" Multiplicity="1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calle">
+              <PropertyRef Name="CodCalle" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodCalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contrato__CodCat__34C8D9D1">
+          <End Role="CatServicio" Type="Self.CatServicio" Multiplicity="1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatServicio">
+              <PropertyRef Name="CodCategoria" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrecioSer__CodCa__21B6055D">
+          <End Role="CatServicio" Type="Self.CatServicio" Multiplicity="1" />
+          <End Role="PrecioServicio" Type="Self.PrecioServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatServicio">
+              <PropertyRef Name="CodCategoria" />
+            </Principal>
+            <Dependent Role="PrecioServicio">
+              <PropertyRef Name="CodCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CobroServ__codCo__412EB0B6">
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="1" />
+          <End Role="CobroServicio" Type="Self.CobroServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contrato">
+              <PropertyRef Name="CodContrato" />
+            </Principal>
+            <Dependent Role="CobroServicio">
+              <PropertyRef Name="codContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CobroServ__CodLe__4222D4EF">
+          <End Role="Lectura" Type="Self.Lectura" Multiplicity="0..1" />
+          <End Role="CobroServicio" Type="Self.CobroServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lectura">
+              <PropertyRef Name="CodLectura" />
+            </Principal>
+            <Dependent Role="CobroServicio">
+              <PropertyRef Name="CodLectura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CobroServ__CodUs__403A8C7D">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="CobroServicio" Type="Self.CobroServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="CodUsuario" />
+            </Principal>
+            <Dependent Role="CobroServicio">
+              <PropertyRef Name="CodUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleCo__CodCo__44FF419A">
+          <End Role="CobroServicio" Type="Self.CobroServicio" Multiplicity="1" />
+          <End Role="DetalleCobro" Type="Self.DetalleCobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CobroServicio">
+              <PropertyRef Name="CodCobro" />
+            </Principal>
+            <Dependent Role="DetalleCobro">
+              <PropertyRef Name="CodCobro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contrato__CodSoc__32E0915F">
+          <End Role="Medidor" Type="Self.Medidor" Multiplicity="1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medidor">
+              <PropertyRef Name="CodMedidor" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodMedidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contrato__CodSoc__36B12243">
+          <End Role="Socio" Type="Self.Socio" Multiplicity="1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Socio">
+              <PropertyRef Name="CodSocio" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodSocio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contrato__CodUsu__35BCFE0A">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="CodUsuario" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="CodUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EstadoSer__CodCo__398D8EEE">
+          <End Role="Contrato" Type="Self.Contrato" Multiplicity="1" />
+          <End Role="EstadoServicio" Type="Self.EstadoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contrato">
+              <PropertyRef Name="CodContrato" />
+            </Principal>
+            <Dependent Role="EstadoServicio">
+              <PropertyRef Name="CodContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleCo__CodSe__45F365D3">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+          <End Role="DetalleCobro" Type="Self.DetalleCobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="CodServicio" />
+            </Principal>
+            <Dependent Role="DetalleCobro">
+              <PropertyRef Name="CodServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lectura__CodMedi__3C69FB99">
+          <End Role="Medidor" Type="Self.Medidor" Multiplicity="1" />
+          <End Role="Lectura" Type="Self.Lectura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medidor">
+              <PropertyRef Name="CodMedidor" />
+            </Principal>
+            <Dependent Role="Lectura">
+              <PropertyRef Name="CodMedidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lectura__CodPeri__3D5E1FD2">
+          <End Role="Periodo" Type="Self.Periodo" Multiplicity="1" />
+          <End Role="Lectura" Type="Self.Lectura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periodo">
+              <PropertyRef Name="CodPeriodo" />
+            </Principal>
+            <Dependent Role="Lectura">
+              <PropertyRef Name="CodPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PrecioSer__CodSe__22AA2996">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+          <End Role="PrecioServicio" Type="Self.PrecioServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="CodServicio" />
+            </Principal>
+            <Dependent Role="PrecioServicio">
+              <PropertyRef Name="CodServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__CodTipo__1920BF5C">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="CodTipoUsu" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="CodTipoUsu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsuarioPrivilegio">
+          <End Role="Privilegio" Type="Self.Privilegio" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SISMAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Barrio" EntityType="Self.Barrio" />
+          <EntitySet Name="Bitacora" EntityType="Self.Bitacora" />
+          <EntitySet Name="Calle" EntityType="Self.Calle" />
+          <EntitySet Name="CatServicio" EntityType="Self.CatServicio" />
+          <EntitySet Name="CobroServicio" EntityType="Self.CobroServicio" />
+          <EntitySet Name="Contrato" EntityType="Self.Contrato" />
+          <EntitySet Name="DetalleCobro" EntityType="Self.DetalleCobro" />
+          <EntitySet Name="EstadoServicio" EntityType="Self.EstadoServicio" />
+          <EntitySet Name="Lectura" EntityType="Self.Lectura" />
+          <EntitySet Name="Medidor" EntityType="Self.Medidor" />
+          <EntitySet Name="Periodo" EntityType="Self.Periodo" />
+          <EntitySet Name="PrecioServicio" EntityType="Self.PrecioServicio" />
+          <EntitySet Name="Privilegio" EntityType="Self.Privilegio" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" />
+          <EntitySet Name="Socio" EntityType="Self.Socio" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" />
+          <EntitySet Name="Transaccion" EntityType="Self.Transaccion" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__Calle__CodBarrio__1273C1CD" Association="Self.FK__Calle__CodBarrio__1273C1CD">
+            <End Role="Barrio" EntitySet="Barrio" />
+            <End Role="Calle" EntitySet="Calle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bitacora__CodUsu__2F10007B" Association="Self.FK__Bitacora__CodUsu__2F10007B">
+            <End Role="Transaccion" EntitySet="Transaccion" />
+            <End Role="Bitacora" EntitySet="Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bitacora__CodUsu__300424B4" Association="Self.FK__Bitacora__CodUsu__300424B4">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Bitacora" EntitySet="Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contrato__CodCal__33D4B598" Association="Self.FK__Contrato__CodCal__33D4B598">
+            <End Role="Calle" EntitySet="Calle" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contrato__CodCat__34C8D9D1" Association="Self.FK__Contrato__CodCat__34C8D9D1">
+            <End Role="CatServicio" EntitySet="CatServicio" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrecioSer__CodCa__21B6055D" Association="Self.FK__PrecioSer__CodCa__21B6055D">
+            <End Role="CatServicio" EntitySet="CatServicio" />
+            <End Role="PrecioServicio" EntitySet="PrecioServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CobroServ__codCo__412EB0B6" Association="Self.FK__CobroServ__codCo__412EB0B6">
+            <End Role="Contrato" EntitySet="Contrato" />
+            <End Role="CobroServicio" EntitySet="CobroServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CobroServ__CodLe__4222D4EF" Association="Self.FK__CobroServ__CodLe__4222D4EF">
+            <End Role="Lectura" EntitySet="Lectura" />
+            <End Role="CobroServicio" EntitySet="CobroServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CobroServ__CodUs__403A8C7D" Association="Self.FK__CobroServ__CodUs__403A8C7D">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="CobroServicio" EntitySet="CobroServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleCo__CodCo__44FF419A" Association="Self.FK__DetalleCo__CodCo__44FF419A">
+            <End Role="CobroServicio" EntitySet="CobroServicio" />
+            <End Role="DetalleCobro" EntitySet="DetalleCobro" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contrato__CodSoc__32E0915F" Association="Self.FK__Contrato__CodSoc__32E0915F">
+            <End Role="Medidor" EntitySet="Medidor" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contrato__CodSoc__36B12243" Association="Self.FK__Contrato__CodSoc__36B12243">
+            <End Role="Socio" EntitySet="Socio" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contrato__CodUsu__35BCFE0A" Association="Self.FK__Contrato__CodUsu__35BCFE0A">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Contrato" EntitySet="Contrato" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EstadoSer__CodCo__398D8EEE" Association="Self.FK__EstadoSer__CodCo__398D8EEE">
+            <End Role="Contrato" EntitySet="Contrato" />
+            <End Role="EstadoServicio" EntitySet="EstadoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleCo__CodSe__45F365D3" Association="Self.FK__DetalleCo__CodSe__45F365D3">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="DetalleCobro" EntitySet="DetalleCobro" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lectura__CodMedi__3C69FB99" Association="Self.FK__Lectura__CodMedi__3C69FB99">
+            <End Role="Medidor" EntitySet="Medidor" />
+            <End Role="Lectura" EntitySet="Lectura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lectura__CodPeri__3D5E1FD2" Association="Self.FK__Lectura__CodPeri__3D5E1FD2">
+            <End Role="Periodo" EntitySet="Periodo" />
+            <End Role="Lectura" EntitySet="Lectura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PrecioSer__CodSe__22AA2996" Association="Self.FK__PrecioSer__CodSe__22AA2996">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="PrecioServicio" EntitySet="PrecioServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__CodTipo__1920BF5C" Association="Self.FK__Usuario__CodTipo__1920BF5C">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="UsuarioPrivilegio" Association="Self.UsuarioPrivilegio">
+            <End Role="Privilegio" EntitySet="Privilegio" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SISMAModelStoreContainer" CdmEntityContainer="SISMAEntities">
+          <EntitySetMapping Name="Barrio">
+            <EntityTypeMapping TypeName="SISMAModel.Barrio">
+              <MappingFragment StoreEntitySet="Barrio">
+                <ScalarProperty Name="CodBarrio" ColumnName="CodBarrio" />
+                <ScalarProperty Name="NomBarrio" ColumnName="NomBarrio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bitacora">
+            <EntityTypeMapping TypeName="SISMAModel.Bitacora">
+              <MappingFragment StoreEntitySet="Bitacora">
+                <ScalarProperty Name="CodBitac" ColumnName="CodBitac" />
+                <ScalarProperty Name="FechaBitac" ColumnName="FechaBitac" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Tabla" ColumnName="Tabla" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="CodTransac" ColumnName="CodTransac" />
+                <ScalarProperty Name="CodUsuario" ColumnName="CodUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calle">
+            <EntityTypeMapping TypeName="SISMAModel.Calle">
+              <MappingFragment StoreEntitySet="Calle">
+                <ScalarProperty Name="CodCalle" ColumnName="CodCalle" />
+                <ScalarProperty Name="CodBarrio" ColumnName="CodBarrio" />
+                <ScalarProperty Name="NomCalle" ColumnName="NomCalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatServicio">
+            <EntityTypeMapping TypeName="SISMAModel.CatServicio">
+              <MappingFragment StoreEntitySet="CatServicio">
+                <ScalarProperty Name="CodCategoria" ColumnName="CodCategoria" />
+                <ScalarProperty Name="NomCategoria" ColumnName="NomCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CobroServicio">
+            <EntityTypeMapping TypeName="SISMAModel.CobroServicio">
+              <MappingFragment StoreEntitySet="CobroServicio">
+                <ScalarProperty Name="CodCobro" ColumnName="CodCobro" />
+                <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Glosa" ColumnName="Glosa" />
+                <ScalarProperty Name="CodUsuario" ColumnName="CodUsuario" />
+                <ScalarProperty Name="codContrato" ColumnName="codContrato" />
+                <ScalarProperty Name="CodLectura" ColumnName="CodLectura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contrato">
+            <EntityTypeMapping TypeName="SISMAModel.Contrato">
+              <MappingFragment StoreEntitySet="Contrato">
+                <ScalarProperty Name="CodContrato" ColumnName="CodContrato" />
+                <ScalarProperty Name="CodFijo" ColumnName="CodFijo" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="DireccionNro" ColumnName="DireccionNro" />
+                <ScalarProperty Name="NroDpto" ColumnName="NroDpto" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="CodMedidor" ColumnName="CodMedidor" />
+                <ScalarProperty Name="CodCalle" ColumnName="CodCalle" />
+                <ScalarProperty Name="CodCategoria" ColumnName="CodCategoria" />
+                <ScalarProperty Name="CodUsuario" ColumnName="CodUsuario" />
+                <ScalarProperty Name="CodSocio" ColumnName="CodSocio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleCobro">
+            <EntityTypeMapping TypeName="SISMAModel.DetalleCobro">
+              <MappingFragment StoreEntitySet="DetalleCobro">
+                <ScalarProperty Name="CodCobro" ColumnName="CodCobro" />
+                <ScalarProperty Name="CodServicio" ColumnName="CodServicio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoServicio">
+            <EntityTypeMapping TypeName="SISMAModel.EstadoServicio">
+              <MappingFragment StoreEntitySet="EstadoServicio">
+                <ScalarProperty Name="CodEstado" ColumnName="CodEstado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CodContrato" ColumnName="CodContrato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lectura">
+            <EntityTypeMapping TypeName="SISMAModel.Lectura">
+              <MappingFragment StoreEntitySet="Lectura">
+                <ScalarProperty Name="CodLectura" ColumnName="CodLectura" />
+                <ScalarProperty Name="ValorLectura" ColumnName="ValorLectura" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="CodMedidor" ColumnName="CodMedidor" />
+                <ScalarProperty Name="CodPeriodo" ColumnName="CodPeriodo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medidor">
+            <EntityTypeMapping TypeName="SISMAModel.Medidor">
+              <MappingFragment StoreEntitySet="Medidor">
+                <ScalarProperty Name="CodMedidor" ColumnName="CodMedidor" />
+                <ScalarProperty Name="NroSerie" ColumnName="NroSerie" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periodo">
+            <EntityTypeMapping TypeName="SISMAModel.Periodo">
+              <MappingFragment StoreEntitySet="Periodo">
+                <ScalarProperty Name="CodPeriodo" ColumnName="CodPeriodo" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="CantidadDias" ColumnName="CantidadDias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrecioServicio">
+            <EntityTypeMapping TypeName="SISMAModel.PrecioServicio">
+              <MappingFragment StoreEntitySet="PrecioServicio">
+                <ScalarProperty Name="CodCategoria" ColumnName="CodCategoria" />
+                <ScalarProperty Name="CodServicio" ColumnName="CodServicio" />
+                <ScalarProperty Name="PrecioUnit" ColumnName="PrecioUnit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privilegio">
+            <EntityTypeMapping TypeName="SISMAModel.Privilegio">
+              <MappingFragment StoreEntitySet="Privilegio">
+                <ScalarProperty Name="CodPrivil" ColumnName="CodPrivil" />
+                <ScalarProperty Name="DesPriv" ColumnName="DesPriv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicio">
+            <EntityTypeMapping TypeName="SISMAModel.Servicio">
+              <MappingFragment StoreEntitySet="Servicio">
+                <ScalarProperty Name="CodServicio" ColumnName="CodServicio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Socio">
+            <EntityTypeMapping TypeName="SISMAModel.Socio">
+              <MappingFragment StoreEntitySet="Socio">
+                <ScalarProperty Name="CodSocio" ColumnName="CodSocio" />
+                <ScalarProperty Name="NomSocio" ColumnName="NomSocio" />
+                <ScalarProperty Name="Paterno" ColumnName="Paterno" />
+                <ScalarProperty Name="Materno" ColumnName="Materno" />
+                <ScalarProperty Name="CI" ColumnName="CI" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoUsuario">
+            <EntityTypeMapping TypeName="SISMAModel.TipoUsuario">
+              <MappingFragment StoreEntitySet="TipoUsuario">
+                <ScalarProperty Name="CodTipoUsu" ColumnName="CodTipoUsu" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transaccion">
+            <EntityTypeMapping TypeName="SISMAModel.Transaccion">
+              <MappingFragment StoreEntitySet="Transaccion">
+                <ScalarProperty Name="CodTransac" ColumnName="CodTransac" />
+                <ScalarProperty Name="DesTransac" ColumnName="DesTransac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="SISMAModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="CodUsuario" ColumnName="CodUsuario" />
+                <ScalarProperty Name="NomUsuario" ColumnName="NomUsuario" />
+                <ScalarProperty Name="Paterno" ColumnName="Paterno" />
+                <ScalarProperty Name="Materno" ColumnName="Materno" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="EstadoUsuario" ColumnName="EstadoUsuario" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CodTipoUsu" ColumnName="CodTipoUsu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UsuarioPrivilegio" TypeName="SISMAModel.UsuarioPrivilegio" StoreEntitySet="UsuarioPrivilegio">
+            <EndProperty Name="Privilegio">
+              <ScalarProperty Name="CodPrivil" ColumnName="CodPrivil" />
+            </EndProperty>
+            <EndProperty Name="Usuario">
+              <ScalarProperty Name="CodUsuario" ColumnName="CodUsuario" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

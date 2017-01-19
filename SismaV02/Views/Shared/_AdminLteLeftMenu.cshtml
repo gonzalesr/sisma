@@ -1,0 +1,125 @@
+﻿@* 
+ This partial controls the left menu of the AdminLTE dashboard and is called automatically by _AdminLteLayout
+    This is where you can add, modify, or remove navigation options in your app
+    TODO: This preserves the links as-is for the demo, which lead to broken pages!
+    It's up to you to make sure these links either get deleted or lead somewhere REAL!
+*@
+
+
+@{
+    Layout = null;
+}
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>Roly Gonzales</p>
+                <!-- Status -->
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <!-- search form (Optional) -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        <!-- /.search form -->
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            <li class="header">Menú Principal</li>
+            <!-- Optionally, you can add icons to the links -->
+            <li class="active"><a href="#"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+            <li class="active treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active"><a href="index.html"><i class="fa fa-angle-double-right"></i> Dashboard v1</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-edit"></i>
+                    <span>Catálogo de Registros</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "Socios" )"><i class="fa fa-angle-double-right"></i> Socios</a></li>
+                    <li><a href="@Url.Action("Index", "Contratos" )"><i class="fa fa-angle-double-right"></i> Contratos</a></li>
+                    <li><a href="@Url.Action("Index", "CategoriasServicios" )"><i class="fa fa-angle-double-right"></i> Categorias</a></li>
+                    <li><a href="@Url.Action("Index", "Servicios" )"><i class="fa fa-angle-double-right"></i> Servicios</a></li>
+                    <li><a href="@Url.Action("Index", "Medidores" )"><i class="fa fa-angle-double-right"></i> Medidores</a></li>
+                    <li><a href="@Url.Action("Index", "PreciosServicios" )"><i class="fa fa-angle-double-right"></i> Precios</a></li>
+                    <li><a href="@Url.Action("Index", "Calles" )"><i class="fa fa-angle-double-right"></i> Calles</a></li>
+                    <li><a href="@Url.Action("Index", "Barrios" )"><i class="fa fa-angle-double-right"></i> Barrios</a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-money"></i>
+                    <span>Gestión de Cobros</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "CobrosServicios" )"><i class="fa fa-angle-double-right"></i> Cobro de Servicio</a></li>
+                    <li><a href="@Url.Action("Index", "Lecturas" )"><i class="fa fa-angle-double-right"></i> Lecturas</a></li>
+                    <li><a href="@Url.Action("Index", "PeriodosLecturas" )"><i class="fa fa-angle-double-right"></i> Periodos de Lectura</a></li>
+                    <li><a href="@Url.Action("Index", "EstadosSuministros" )"><i class="fa fa-angle-double-right"></i> Estado de suministro</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-bar-chart-o"></i>
+                    <span>Reportes</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "ReportesDiarios" )"><i class="fa fa-angle-double-right"></i> Reporte Diario</a></li>
+                    <li><a href="@Url.Action("Index", "ReportesEntreFechas" )"><i class="fa fa-angle-double-right"></i> Reporte Entre Fechas</a></li>
+                    <li><a href="@Url.Action("Index", "ReportesSocios" )"><i class="fa fa-angle-double-right"></i> Reporte de Socios</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-lock"></i>
+                    <span>Administración</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "Usuarios" )"><i class="fa fa-angle-double-right"></i> Usuarios</a></li>
+                    <li><a href="@Url.Action("Index", "TiposUsuarios" )"><i class="fa fa-angle-double-right"></i> Tipo de Usuario</a></li>
+                    <li><a href="@Url.Action("Index", "Privilegios" )"><i class="fa fa-angle-double-right"></i> Privilegio</a></li>
+                    <li><a href="@Url.Action("Index", "BackupsBDs" )"><i class="fa fa-angle-double-right"></i> Backup Base Datos</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+</aside>
