@@ -1,0 +1,48 @@
+﻿@model SismaV02.Models.PrecioServicio
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PrecioServicio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatServicio.NomCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatServicio.NomCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Servicio.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Servicio.Descripcion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

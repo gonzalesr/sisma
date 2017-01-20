@@ -1,0 +1,26 @@
+﻿@model SismaV02.Models.Transaccion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transaccion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DesTransac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesTransac)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodTransac }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

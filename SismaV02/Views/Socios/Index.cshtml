@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SismaV02.Models.Socio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomSocio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Materno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomSocio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Materno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodSocio }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodSocio }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodSocio })
+        </td>
+    </tr>
+}
+
+</table>

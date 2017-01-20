@@ -1,0 +1,66 @@
+﻿@model SismaV02.Models.CobroServicio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CobroServicio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Glosa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Glosa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrato.CodFijo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contrato.CodFijo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lectura.CodLectura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lectura.CodLectura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.NomUsuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodCobro }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

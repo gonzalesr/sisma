@@ -170,9 +170,25 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BarriosController.cs" />
+    <Compile Include="Controllers\BitacorasController.cs" />
     <Compile Include="Controllers\CallesController.cs" />
+    <Compile Include="Controllers\CategoriasServiciosController.cs" />
+    <Compile Include="Controllers\CobrosServiciosController.cs" />
+    <Compile Include="Controllers\ContratosController.cs" />
+    <Compile Include="Controllers\DetallesCobrosController.cs" />
+    <Compile Include="Controllers\EstadosServiciosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LecturasController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MedidoresController.cs" />
+    <Compile Include="Controllers\PeriodosController.cs" />
+    <Compile Include="Controllers\PreciosServiciosController.cs" />
+    <Compile Include="Controllers\PrivilegiosController.cs" />
+    <Compile Include="Controllers\ServiciosController.cs" />
+    <Compile Include="Controllers\SociosController.cs" />
+    <Compile Include="Controllers\TiposUsuariosController.cs" />
+    <Compile Include="Controllers\TransaccionesController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -209,6 +225,8 @@
     <Compile Include="Models\Medidor.cs">
       <DependentUpon>SismaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metadata.cs" />
+    <Compile Include="Models\PartialClasses.cs" />
     <Compile Include="Models\Periodo.cs">
       <DependentUpon>SismaModel.tt</DependentUpon>
     </Compile>
@@ -370,15 +388,92 @@
     <Content Include="Views\Calles\Details.cshtml" />
     <Content Include="Views\Calles\Edit.cshtml" />
     <Content Include="Views\Calles\Index.cshtml" />
+    <Content Include="Views\Bitacoras\Create.cshtml" />
+    <Content Include="Views\Bitacoras\Delete.cshtml" />
+    <Content Include="Views\Bitacoras\Details.cshtml" />
+    <Content Include="Views\Bitacoras\Edit.cshtml" />
+    <Content Include="Views\Bitacoras\Index.cshtml" />
+    <Content Include="Views\CategoriasServicios\Create.cshtml" />
+    <Content Include="Views\CategoriasServicios\Delete.cshtml" />
+    <Content Include="Views\CategoriasServicios\Details.cshtml" />
+    <Content Include="Views\CategoriasServicios\Edit.cshtml" />
+    <Content Include="Views\CategoriasServicios\Index.cshtml" />
+    <Content Include="Views\CobrosServicios\Create.cshtml" />
+    <Content Include="Views\CobrosServicios\Delete.cshtml" />
+    <Content Include="Views\CobrosServicios\Details.cshtml" />
+    <Content Include="Views\CobrosServicios\Edit.cshtml" />
+    <Content Include="Views\CobrosServicios\Index.cshtml" />
+    <Content Include="Views\Contratos\Create.cshtml" />
+    <Content Include="Views\Contratos\Delete.cshtml" />
+    <Content Include="Views\Contratos\Details.cshtml" />
+    <Content Include="Views\Contratos\Edit.cshtml" />
+    <Content Include="Views\Contratos\Index.cshtml" />
+    <Content Include="Views\DetallesCobros\Create.cshtml" />
+    <Content Include="Views\DetallesCobros\Delete.cshtml" />
+    <Content Include="Views\DetallesCobros\Details.cshtml" />
+    <Content Include="Views\DetallesCobros\Edit.cshtml" />
+    <Content Include="Views\DetallesCobros\Index.cshtml" />
+    <Content Include="Views\EstadosServicios\Create.cshtml" />
+    <Content Include="Views\EstadosServicios\Delete.cshtml" />
+    <Content Include="Views\EstadosServicios\Details.cshtml" />
+    <Content Include="Views\EstadosServicios\Edit.cshtml" />
+    <Content Include="Views\EstadosServicios\Index.cshtml" />
+    <Content Include="Views\Lecturas\Create.cshtml" />
+    <Content Include="Views\Lecturas\Delete.cshtml" />
+    <Content Include="Views\Lecturas\Details.cshtml" />
+    <Content Include="Views\Lecturas\Edit.cshtml" />
+    <Content Include="Views\Lecturas\Index.cshtml" />
+    <Content Include="Views\Medidores\Create.cshtml" />
+    <Content Include="Views\Medidores\Delete.cshtml" />
+    <Content Include="Views\Medidores\Details.cshtml" />
+    <Content Include="Views\Medidores\Edit.cshtml" />
+    <Content Include="Views\Medidores\Index.cshtml" />
+    <Content Include="Views\Periodos\Create.cshtml" />
+    <Content Include="Views\Periodos\Delete.cshtml" />
+    <Content Include="Views\Periodos\Details.cshtml" />
+    <Content Include="Views\Periodos\Edit.cshtml" />
+    <Content Include="Views\Periodos\Index.cshtml" />
+    <Content Include="Views\PreciosServicios\Create.cshtml" />
+    <Content Include="Views\PreciosServicios\Delete.cshtml" />
+    <Content Include="Views\PreciosServicios\Details.cshtml" />
+    <Content Include="Views\PreciosServicios\Edit.cshtml" />
+    <Content Include="Views\PreciosServicios\Index.cshtml" />
+    <Content Include="Views\Privilegios\Create.cshtml" />
+    <Content Include="Views\Privilegios\Delete.cshtml" />
+    <Content Include="Views\Privilegios\Details.cshtml" />
+    <Content Include="Views\Privilegios\Edit.cshtml" />
+    <Content Include="Views\Privilegios\Index.cshtml" />
+    <Content Include="Views\Servicios\Create.cshtml" />
+    <Content Include="Views\Servicios\Delete.cshtml" />
+    <Content Include="Views\Servicios\Details.cshtml" />
+    <Content Include="Views\Servicios\Edit.cshtml" />
+    <Content Include="Views\Servicios\Index.cshtml" />
+    <Content Include="Views\Socios\Create.cshtml" />
+    <Content Include="Views\Socios\Delete.cshtml" />
+    <Content Include="Views\Socios\Details.cshtml" />
+    <Content Include="Views\Socios\Edit.cshtml" />
+    <Content Include="Views\Socios\Index.cshtml" />
+    <Content Include="Views\TiposUsuarios\Create.cshtml" />
+    <Content Include="Views\TiposUsuarios\Delete.cshtml" />
+    <Content Include="Views\TiposUsuarios\Details.cshtml" />
+    <Content Include="Views\TiposUsuarios\Edit.cshtml" />
+    <Content Include="Views\TiposUsuarios\Index.cshtml" />
+    <Content Include="Views\Transacciones\Create.cshtml" />
+    <Content Include="Views\Transacciones\Delete.cshtml" />
+    <Content Include="Views\Transacciones\Details.cshtml" />
+    <Content Include="Views\Transacciones\Edit.cshtml" />
+    <Content Include="Views\Transacciones\Index.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Delete.cshtml" />
+    <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bootstrap\" />
-    <Folder Include="build\" />
     <Folder Include="Content\AdminLTE\img\" />
     <Folder Include="Content\AdminLTE\js\" />
-    <Folder Include="pages\" />
-    <Folder Include="plugins\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AdminLTE\fonts\glyphicons-halflings-regular.woff" />

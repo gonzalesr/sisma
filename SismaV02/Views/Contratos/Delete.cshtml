@@ -1,0 +1,104 @@
+﻿@model SismaV02.Models.Contrato
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Contrato</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodFijo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodFijo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DireccionNro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DireccionNro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NroDpto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NroDpto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calle.NomCalle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calle.NomCalle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatServicio.NomCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatServicio.NomCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medidor.NroSerie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medidor.NroSerie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Socio.NomSocio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Socio.NomSocio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.NomUsuario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

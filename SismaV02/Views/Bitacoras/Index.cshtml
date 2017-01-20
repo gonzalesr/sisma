@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SismaV02.Models.Bitacora>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaBitac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tabla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Registro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transaccion.DesTransac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaBitac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tabla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Registro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transaccion.DesTransac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.NomUsuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodBitac }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodBitac }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodBitac })
+        </td>
+    </tr>
+}
+
+</table>

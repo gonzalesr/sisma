@@ -1,0 +1,87 @@
+﻿@model IEnumerable<SismaV02.Models.Contrato>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodFijo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DireccionNro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NroDpto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Calle.NomCalle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CatServicio.NomCategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Medidor.NroSerie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Socio.NomSocio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodFijo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DireccionNro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NroDpto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Calle.NomCalle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CatServicio.NomCategoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Medidor.NroSerie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Socio.NomSocio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.NomUsuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodContrato }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodContrato }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodContrato })
+        </td>
+    </tr>
+}
+
+</table>

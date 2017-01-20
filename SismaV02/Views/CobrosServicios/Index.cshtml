@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SismaV02.Models.CobroServicio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MontoTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Glosa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contrato.CodFijo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lectura.CodLectura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontoTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Glosa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contrato.CodFijo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lectura.CodLectura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.NomUsuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodCobro }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodCobro }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodCobro })
+        </td>
+    </tr>
+}
+
+</table>

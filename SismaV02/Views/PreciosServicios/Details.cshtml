@@ -1,0 +1,42 @@
+﻿@model SismaV02.Models.PrecioServicio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PrecioServicio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatServicio.NomCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatServicio.NomCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Servicio.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Servicio.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

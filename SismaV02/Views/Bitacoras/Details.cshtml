@@ -1,0 +1,66 @@
+﻿@model SismaV02.Models.Bitacora
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bitacora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaBitac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaBitac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tabla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tabla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Registro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Transaccion.DesTransac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transaccion.DesTransac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.NomUsuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodBitac }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

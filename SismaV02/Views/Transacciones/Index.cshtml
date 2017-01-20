@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SismaV02.Models.Transaccion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DesTransac)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DesTransac)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodTransac }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodTransac }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodTransac })
+        </td>
+    </tr>
+}
+
+</table>

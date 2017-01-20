@@ -1,0 +1,98 @@
+﻿@model SismaV02.Models.Contrato
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contrato</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodFijo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodFijo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DireccionNro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DireccionNro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NroDpto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NroDpto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calle.NomCalle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calle.NomCalle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatServicio.NomCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatServicio.NomCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medidor.NroSerie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medidor.NroSerie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Socio.NomSocio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Socio.NomSocio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.NomUsuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodContrato }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

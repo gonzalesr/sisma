@@ -1,0 +1,50 @@
+﻿@model SismaV02.Models.DetalleCobro
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DetalleCobro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CobroServicio.Glosa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CobroServicio.Glosa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Servicio.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Servicio.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

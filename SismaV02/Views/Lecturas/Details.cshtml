@@ -1,0 +1,58 @@
+﻿@model SismaV02.Models.Lectura
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lectura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorLectura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorLectura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medidor.NroSerie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medidor.NroSerie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Periodo.CodPeriodo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Periodo.CodPeriodo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodLectura }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
