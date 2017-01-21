@@ -23,4 +23,42 @@ namespace SismaV02.Models
         [Display(Name = "Calle")]
         public string NomCalle { get; set; }
     }
+
+    public class BitacoraMetadata
+    {
+        [Display(Name = "Código")]
+        public int CodBitac { get; set; }
+        [Display(Name = "Fecha")]
+        public System.DateTime FechaBitac { get; set; }
+        public System.TimeSpan Hora { get; set; }
+
+        public string Tabla { get; set; }
+        public string Registro { get; set; }
+        [Display(Name = "Transacción")]
+        public int CodTransac { get; set; }
+        [Display(Name = "Usuario")]
+        public int CodUsuario { get; set; }
+    }
+    public class CatServicioMetadata
+    {
+        [Display(Name = "Código")]
+        public int CodCategoria { get; set; }
+        [Display(Name = "Categoría")]
+        public string NomCategoria { get; set; }
+
+    }
+
+    public class CobroServicioMetadata
+    {
+        [Display(Name = "Código")]
+        public int CodCobro { get; set; }
+        [Display(Name = "Monto Total")]
+        public decimal MontoTotal { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public string Glosa { get; set; }
+        [Display(Name = "Usuario")]
+        public int CodUsuario { get; set; }
+        [Display(Name = "Contrato")]
+        public int codContrato { get; set; }
+    }
 }

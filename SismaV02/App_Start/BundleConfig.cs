@@ -17,6 +17,13 @@ namespace SismaV02
             bundles.Add(new ScriptBundle("~/bundles/AdminLTE").Include(
                         "~/Content/AdminLTE/js/app.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/DataTable").Include(
+                        "~/Content/AdminLTE/plugins/datatables/jquery.dataTables.min.js",
+                        "~/Content/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js",
+                        "~/Content/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js",
+                        "~/Content/AdminLTE/plugins/fastclick/fastclick.js",
+                        "~/Content/AdminLTE/js/demo.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

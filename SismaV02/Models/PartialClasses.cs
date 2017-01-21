@@ -13,4 +13,17 @@ namespace SismaV02.Models
     public partial class Calle
     {
     }
+
+    [MetadataType(typeof(BitacoraMetadata))]
+    public partial class Bitacora
+    {
+    }
+
+    [MetadataType(typeof(CatServicioMetadata))]
+    public partial class CatServicio
+    {
+    }
+    [MetadataType(typeof(CobroServicioMetadata))]
+    public partial class CobroServicio
+    { }
 }

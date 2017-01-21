@@ -1,35 +1,98 @@
 ﻿@model IEnumerable<SismaV02.Models.Barrio>
 
+@section AddToHead{
+    <link href="@Url.Content("~/Content/AdminLTE/plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/css/skins/_all-skins.min.css" rel="stylesheet" />
+}
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Barrios";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NomBarrio)
-        </th>
-        <th></th>
-    </tr>
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Barrios</h3>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomBarrio)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CodBarrio }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CodBarrio }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodBarrio })
-        </td>
-    </tr>
-}
+    <div class="box-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CodBarrio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomBarrio)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
 
-</table>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CodBarrio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomBarrio)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.CodBarrio }) |
+                            @Html.ActionLink("Detalles", "Details", new { id = item.CodBarrio }) |
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.CodBarrio })
+                        </td>
+                    </tr>
+                }
+            </tbody>
 
+            <tfoot>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CodBarrio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomBarrio)
+                    </th>
+                    <th></th>
+            </tfoot>
+        </table>
+    </div>
 
+    @section Scripts {
+        @Scripts.Render("~/bundles/DataTable")
+        <script>
+            $(function () {
+                $("#example1").DataTable({
+                    "oLanguage": {
+                        "sSearch": "Buscar: ",
+                        "sLengthMenu": "Mostrar _MENU_ registros",
+                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                        "sInfoFiltered": "(filtrados de _MAX_ registros en total)",
+                        "oPaginate": {
+                            "sFirst": "Primera",
+                            "sLast": "Última",
+                            "sPrevious": "Anterior",
+                            "sNext": "Siguiente"
+                        },
+                        "sSearchPlaceholder": "Ingrese busqueda...",
+                    },
+
+                });
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false
+                });
+            });
+        </script>
+    }
