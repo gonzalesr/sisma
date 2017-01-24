@@ -1,87 +1,143 @@
 ﻿@model IEnumerable<SismaV02.Models.Contrato>
-
+@section AddToHead{
+    <link href="@Url.Content("~/Content/AdminLTE/plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/css/skins/_all-skins.min.css" rel="stylesheet" />
+}
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Contratos";
 }
 
-<h2>Index</h2>
+<h2>Contratos</h2>
 
 <p>
     @Html.ActionLink("Nuevo", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CodFijo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaInicio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DireccionNro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NroDpto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Observacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Calle.NomCalle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CatServicio.NomCategoria)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Medidor.NroSerie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Socio.NomSocio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
-        </th>
-        <th></th>
-    </tr>
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Contratos</h3>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CodFijo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaInicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DireccionNro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NroDpto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Observacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Calle.NomCalle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CatServicio.NomCategoria)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Medidor.NroSerie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Socio.NomSocio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario.NomUsuario)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.CodContrato }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.CodContrato }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.CodContrato })
-        </td>
-    </tr>
+    <div class="box-body">
+        <table id="listaModelo" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CodFijo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FechaInicio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DireccionNro)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NroDpto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Observacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Calle.NomCalle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CatServicio.NomCategoria)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Medidor.NroSerie)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Socio.NomSocio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CodFijo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaInicio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DireccionNro)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NroDpto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Observacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Calle.NomCalle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CatServicio.NomCategoria)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Medidor.NroSerie)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Socio.NomSocio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usuario.NomUsuario)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.CodContrato }) |
+                            @Html.ActionLink("Detalles", "Details", new { id = item.CodContrato }) |
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.CodContrato })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        <tfoot>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodFijo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaInicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DireccionNro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NroDpto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Observacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Calle.NomCalle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CatServicio.NomCategoria)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Medidor.NroSerie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Socio.NomSocio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+                </th>
+                <th></th>
+            </tr>
+        </tfoot>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/DataTable")
 }
 
-</table>

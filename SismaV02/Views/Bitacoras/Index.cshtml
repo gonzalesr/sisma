@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<SismaV02.Models.Bitacora>
 
+@section AddToHead{
+    <link href="@Url.Content("~/Content/AdminLTE/plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/css/skins/_all-skins.min.css" rel="stylesheet" />
+}
+
 @{
     ViewBag.Title = "Index";
 }
@@ -9,55 +14,96 @@
 <p>
     @Html.ActionLink("Nuevo", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaBitac)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hora)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tabla)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Registro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Transaccion.DesTransac)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
-        </th>
-        <th></th>
-    </tr>
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Bitacora</h3>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaBitac)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hora)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tabla)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Registro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Transaccion.DesTransac)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario.NomUsuario)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.CodBitac }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.CodBitac }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.CodBitac })
-        </td>
-    </tr>
+    <div class="box-body">
+        <table id="listaModelo" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FechaBitac)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hora)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tabla)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Registro)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transaccion.DesTransac)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+                    </th>
+                    <th></th>
+                </tr>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaBitac)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Hora)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tabla)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Registro)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Transaccion.DesTransac)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Usuario.NomUsuario)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.CodBitac }) |
+                                @Html.ActionLink("Detalles", "Details", new { id = item.CodBitac }) |
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.CodBitac })
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            <tfoot>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FechaBitac)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hora)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tabla)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Registro)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transaccion.DesTransac)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+                    </th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/DataTable")
 }
 
-</table>
+

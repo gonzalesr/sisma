@@ -3,61 +3,105 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@section AddToHead{
+    <link href="@Url.Content("~/Content/AdminLTE/plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AdminLTE/css/skins/_all-skins.min.css" rel="stylesheet" />
+}
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Nuevo", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MontoTotal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Glosa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contrato.CodFijo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lectura.CodLectura)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
-        </th>
-        <th></th>
-    </tr>
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Categorias</h3>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MontoTotal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Glosa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contrato.CodFijo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lectura.CodLectura)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario.NomUsuario)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.CodCobro }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.CodCobro }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.CodCobro })
-        </td>
-    </tr>
+    <div class="box-body">
+        <table id="listaModelo" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MontoTotal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fecha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Glosa)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Contrato.CodFijo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Lectura.CodLectura)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+                    </th>
+                    <th></th>
+                </tr>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MontoTotal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fecha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Glosa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Contrato.CodFijo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Lectura.CodLectura)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usuario.NomUsuario)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.CodCobro }) |
+                            @Html.ActionLink("Detalles", "Details", new { id = item.CodCobro }) |
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.CodCobro })
+                        </td>
+                    </tr>
+                }
+
+                </tbody>
+
+            <tfoot>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MontoTotal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fecha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Glosa)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Contrato.CodFijo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Lectura.CodLectura)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usuario.NomUsuario)
+                    </th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/DataTable")
 }
 
-</table>
+

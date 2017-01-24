@@ -1157,6 +1157,7 @@
     <Content Include="Content\AdminLTE\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Content\AdminLTE\plugins\input-mask\phone-codes\phone-codes.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\DataTableCustom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

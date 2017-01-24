@@ -22,7 +22,8 @@ namespace SismaV02
                         "~/Content/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js",
                         "~/Content/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js",
                         "~/Content/AdminLTE/plugins/fastclick/fastclick.js",
-                        "~/Content/AdminLTE/js/demo.js"));
+                        "~/Content/AdminLTE/js/demo.js",
+                        "~/Scripts/DataTableCustom.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
