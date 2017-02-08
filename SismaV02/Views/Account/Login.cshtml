@@ -44,14 +44,14 @@
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
-                    <div class="col-xs-8">
+                    <div class="col-xs-6">
                         <div class="checkbox icheck">
                             @Html.CheckBoxFor(m => m.RememberMe)
                             @Html.LabelFor(m => m.RememberMe)
                         </div>
                     </div>
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    <div class="col-xs-6">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar sesión</button>
                     </div>
                 </div>
             }
@@ -66,14 +66,14 @@
                     Google+
                 </a>
             </div>*@
-            <a href="#">Olvide mi contraseña</a><br>
-            <a href="@Url.Action("Registro", "Account")" class="text-center">Registrese como nuevo usuario</a>
+            @*<a href="#">Olvide mi contraseña</a><br>*@
+            @*<a href="@Url.Action("Registro", "Account")" class="text-center">Registrese como nuevo usuario</a>*@
         </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Content/AdminLTE/plugins/icheck/js")
+    @Scripts.Render("~/Content/AdminLTE/plugins/iCheck")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Scripts/Account/Login")
 

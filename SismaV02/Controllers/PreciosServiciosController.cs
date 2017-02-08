@@ -22,13 +22,13 @@ namespace SismaV02.Controllers
         }
 
         // GET: PreciosServicios/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? CodCategoria, int? CodServicio)
         {
-            if (id == null)
+            if (CodCategoria == null || CodServicio == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PrecioServicio precioServicio = db.PrecioServicio.Find(id);
+            PrecioServicio precioServicio = db.PrecioServicio.Find(CodCategoria ,CodServicio );
             if (precioServicio == null)
             {
                 return HttpNotFound();
@@ -64,13 +64,10 @@ namespace SismaV02.Controllers
         }
 
         // GET: PreciosServicios/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? CodCategoria, int CodServicio )
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PrecioServicio precioServicio = db.PrecioServicio.Find(id);
+            PrecioServicio precioServicio = db.PrecioServicio.Find(CodCategoria, CodServicio);
+
             if (precioServicio == null)
             {
                 return HttpNotFound();
@@ -99,13 +96,13 @@ namespace SismaV02.Controllers
         }
 
         // GET: PreciosServicios/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? CodCategoria, int? CodServicio)
         {
-            if (id == null)
+            if (CodCategoria == null || CodServicio == null )
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PrecioServicio precioServicio = db.PrecioServicio.Find(id);
+            PrecioServicio precioServicio = db.PrecioServicio.Find(CodCategoria ,CodServicio );
             if (precioServicio == null)
             {
                 return HttpNotFound();
@@ -116,9 +113,9 @@ namespace SismaV02.Controllers
         // POST: PreciosServicios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? CodCategoria, int? CodServicio)
         {
-            PrecioServicio precioServicio = db.PrecioServicio.Find(id);
+            PrecioServicio precioServicio = db.PrecioServicio.Find(CodCategoria,CodServicio);
             db.PrecioServicio.Remove(precioServicio);
             db.SaveChanges();
             return RedirectToAction("Index");

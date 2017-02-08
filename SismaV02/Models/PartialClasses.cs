@@ -26,4 +26,8 @@ namespace SismaV02.Models
     [MetadataType(typeof(CobroServicioMetadata))]
     public partial class CobroServicio
     { }
+
+    [MetadataType(typeof(PrecioServicioMetadata))]
+    public partial class PrecioServicio
+    { }
 }

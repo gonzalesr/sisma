@@ -61,4 +61,18 @@ namespace SismaV02.Models
         [Display(Name = "Contrato")]
         public int codContrato { get; set; }
     }
+
+    public class PrecioServicioMetadata
+    {
+        [Key]
+        [Column(Order = 0)]
+        public int CodCategoria { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        public int CodServicio { get; set; }
+        //public decimal PrecioUnit { get; set; }
+
+        //public virtual CatServicio CatServicio { get; set; }
+        //public virtual Servicio Servicio { get; set; }
+    }
 }

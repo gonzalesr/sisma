@@ -15,6 +15,10 @@ namespace SismaV02
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            // plugins | jquery-ui
+            bundles.Add(new ScriptBundle("~/Content/AdminLTE/plugins/jquery-ui/js").Include(
+                                         "~/AdminLTE/plugins/jquery-ui/js/jquery-ui.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/AdminLTE").Include(
                         "~/Content/AdminLTE/js/app.min.js"));
 
@@ -37,7 +41,7 @@ namespace SismaV02
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
-                      "~/Content/AdminLTE/plugins/font-awesome/css/font-awesome.min.css",
+                      "~/Content/AdminLTE/css/font-awesome.min.css",
                       "~/Content/AdminLTE/css/ionicons.min.css",
                       "~/Content/AdminLTE/css/AdminLTE.css",
                       "~/Content/AdminLTE/css/skins/skin-blue.min.css"
@@ -47,8 +51,8 @@ namespace SismaV02
                      "~/Content/AdminLTE/plugins/iCheck/square/blue.css"));
 
             // plugins | icheck
-            bundles.Add(new ScriptBundle("~/Content/AdminLTE/plugins/icheck/js").Include(
-                                         "~/Content/AdminLTE/plugins/icheck/js/icheck.min.js"));
+            bundles.Add(new ScriptBundle("~/Content/AdminLTE/plugins/iCheck").Include(
+                                         "~/Content/AdminLTE/plugins/iCheck/icheck.min.js"));
 
             bundles.Add(new ScriptBundle("~/Scripts/Account/Login").Include(
                "~/Scripts/Account/Login.js"));

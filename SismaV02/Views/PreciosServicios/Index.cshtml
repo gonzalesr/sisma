@@ -48,9 +48,12 @@
                             @Html.DisplayFor(modelItem => item.Servicio.Descripcion)
                         </td>
                         <td>
-                            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @*@Html.ActionLink("Editar", "Edit", new { CodCategoria = item.CodCategoria, CodServicio = item.CodServicio }) |
                             @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ })
+                            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ })*@
+                            <a class="btn btn-default btn-sm" href="@Url.Action("Edit", "PreciosServicios", new { CodCategoria = item.CodCategoria, CodServicio = item.CodServicio })" ><span class='glyphicon glyphicon-pencil'></span></a>
+                            <a class="btn btn-info btn-sm" href="@Url.Action("Details", "PreciosServicios", new { CodCategoria = item.CodCategoria, CodServicio = item.CodServicio })"><span class='glyphicon glyphicon-tasks'></span></a>
+                            <a class="btn btn-danger btn-sm"href="@Url.Action("Delete", "PreciosServicios", new { CodCategoria = item.CodCategoria, CodServicio = item.CodServicio })"><span class='glyphicon glyphicon-trash'></span></a>
                         </td>
                     </tr>
                 }

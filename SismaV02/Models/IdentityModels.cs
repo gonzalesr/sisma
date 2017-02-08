@@ -6,6 +6,10 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SismaV02.Models
 {
+    //public class CustomIdentityUser : IdentityUser
+    //{
+    //    public string NameIdentifier { get; set; }
+    //}
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
@@ -14,6 +18,9 @@ namespace SismaV02.Models
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
+            //userIdentity.AddClaim(new Claim("SismaV02.Models.RegisterViewModel.NameIdentifier", NameIdentifier));
+            userIdentity.AddClaim(new Claim("SismaV02.Models.RegisterViewModel.Email", Email));
+
             return userIdentity;
         }
     }
