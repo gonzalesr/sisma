@@ -1117,6 +1117,8 @@
       <DependentUpon>SismaModel.edmx</DependentUpon>
       <LastGenOutput>SismaModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\Account\Login.js" />
+    <Content Include="Scripts\Account\Register.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\SismaModel.edmx">

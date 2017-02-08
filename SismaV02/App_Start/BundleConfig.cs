@@ -6,6 +6,7 @@ namespace SismaV02
     public class BundleConfig
     {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -36,12 +37,25 @@ namespace SismaV02
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
-                      "~/Content/AdminLTE/css/font-awesome.min.css",
+                      "~/Content/AdminLTE/plugins/font-awesome/css/font-awesome.min.css",
                       "~/Content/AdminLTE/css/ionicons.min.css",
                       "~/Content/AdminLTE/css/AdminLTE.css",
                       "~/Content/AdminLTE/css/skins/skin-blue.min.css"
                       //"~/Content/site.css"
                       ));
+            bundles.Add(new ScriptBundle("~/Content/AdminLTE/plugins/iCheck/square/blue").Include(
+                     "~/Content/AdminLTE/plugins/iCheck/square/blue.css"));
+
+            // plugins | icheck
+            bundles.Add(new ScriptBundle("~/Content/AdminLTE/plugins/icheck/js").Include(
+                                         "~/Content/AdminLTE/plugins/icheck/js/icheck.min.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/Account/Login").Include(
+               "~/Scripts/Account/Login.js"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/Account/Register").Include(
+                "~/Scripts/Account/Register.js"));
+
         }
     }
 }
