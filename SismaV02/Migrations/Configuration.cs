@@ -9,7 +9,7 @@ namespace SismaV02.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "SismaV02.Models.ApplicationDbContext";
         }
 

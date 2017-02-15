@@ -43,6 +43,14 @@
         <AssociationConnector Association="SISMAModel.FK__PrecioSer__CodSe__22AA2996" ManuallyRouted="false" />
         <AssociationConnector Association="SISMAModel.FK__Usuario__CodTipo__1920BF5C" ManuallyRouted="false" />
         <AssociationConnector Association="SISMAModel.UsuarioPrivilegio" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SISMAModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SISMAModel.AspNetRoles" Width="1.5" PointX="7.75" PointY="11.5" />
+        <EntityTypeShape EntityType="SISMAModel.AspNetUserClaims" Width="1.5" PointX="12.25" PointY="10" />
+        <EntityTypeShape EntityType="SISMAModel.AspNetUserLogins" Width="1.5" PointX="12.25" PointY="12.75" />
+        <EntityTypeShape EntityType="SISMAModel.AspNetUsers" Width="1.5" PointX="10" PointY="10.375" />
+        <AssociationConnector Association="SISMAModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="SISMAModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="SISMAModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

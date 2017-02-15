@@ -27,6 +27,7 @@ namespace SismaV02.Models
         public int CodUsuario { get; set; }
         public int codContrato { get; set; }
         public Nullable<int> CodLectura { get; set; }
+        public bool Pagado { get; set; }
     
         public virtual Contrato Contrato { get; set; }
         public virtual Lectura Lectura { get; set; }

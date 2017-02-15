@@ -30,4 +30,8 @@ namespace SismaV02.Models
     [MetadataType(typeof(PrecioServicioMetadata))]
     public partial class PrecioServicio
     { }
+
+    //[MetadataType(typeof(RegisterViewModelMetadata))]
+    //public partial class RegisterViewModel
+    //{ }
 }

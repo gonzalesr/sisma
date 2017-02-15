@@ -5,6 +5,69 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SISMAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="NameIdentifier" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Barrio">
           <Key>
             <PropertyRef Name="CodBarrio" />
@@ -50,6 +113,7 @@
           <Property Name="CodUsuario" Type="int" Nullable="false" />
           <Property Name="codContrato" Type="int" Nullable="false" />
           <Property Name="CodLectura" Type="int" />
+          <Property Name="Pagado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Contrato">
           <Key>
@@ -186,7 +250,7 @@
           <Property Name="CodUsuario" Type="int" Nullable="false" />
           <Property Name="CodPrivil" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Bitacora__CodUsu__38996AB5">
+        <Association Name="FK__Bitacora__CodUsu__2F10007B">
           <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="1" />
           <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
           <ReferentialConstraint>
@@ -198,7 +262,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bitacora__CodUsu__398D8EEE">
+        <Association Name="FK__Bitacora__CodUsu__300424B4">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
           <ReferentialConstraint>
@@ -210,7 +274,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Calle__CodBarrio__0519C6AF">
+        <Association Name="FK__Calle__CodBarrio__1273C1CD">
           <End Role="Barrio" Type="Self.Barrio" Multiplicity="1" />
           <End Role="Calle" Type="Self.Calle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -222,7 +286,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CobroServ__codCo__52593CB8">
+        <Association Name="FK__CobroServ__codCo__4222D4EF">
           <End Role="Contrato" Type="Self.Contrato" Multiplicity="1" />
           <End Role="CobroServicio" Type="Self.CobroServicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -234,7 +298,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CobroServ__CodLe__534D60F1">
+        <Association Name="FK__CobroServ__CodLe__4316F928">
           <End Role="Lectura" Type="Self.Lectura" Multiplicity="0..1" />
           <End Role="CobroServicio" Type="Self.CobroServicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -246,7 +310,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CobroServ__CodUs__5165187F">
+        <Association Name="FK__CobroServ__CodUs__412EB0B6">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="CobroServicio" Type="Self.CobroServicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -258,7 +322,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contrato__CodCal__3F466844">
+        <Association Name="FK__Contrato__CodCal__33D4B598">
           <End Role="Calle" Type="Self.Calle" Multiplicity="1" />
           <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
           <ReferentialConstraint>
@@ -270,7 +334,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contrato__CodCat__403A8C7D">
+        <Association Name="FK__Contrato__CodCat__34C8D9D1">
           <End Role="CatServicio" Type="Self.CatServicio" Multiplicity="1" />
           <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
           <ReferentialConstraint>
@@ -282,7 +346,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contrato__CodSoc__3E52440B">
+        <Association Name="FK__Contrato__CodSoc__32E0915F">
           <End Role="Medidor" Type="Self.Medidor" Multiplicity="1" />
           <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
           <ReferentialConstraint>
@@ -294,7 +358,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contrato__CodSoc__4222D4EF">
+        <Association Name="FK__Contrato__CodSoc__36B12243">
           <End Role="Socio" Type="Self.Socio" Multiplicity="1" />
           <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
           <ReferentialConstraint>
@@ -306,7 +370,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contrato__CodUsu__412EB0B6">
+        <Association Name="FK__Contrato__CodUsu__35BCFE0A">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
           <ReferentialConstraint>
@@ -318,7 +382,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetalleCo__CodCo__5812160E">
+        <Association Name="FK__DetalleCo__CodCo__45F365D3">
           <End Role="CobroServicio" Type="Self.CobroServicio" Multiplicity="1" />
           <End Role="DetalleCobro" Type="Self.DetalleCobro" Multiplicity="*" />
           <ReferentialConstraint>
@@ -330,7 +394,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetalleCo__CodSe__59063A47">
+        <Association Name="FK__DetalleCo__CodSe__46E78A0C">
           <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
           <End Role="DetalleCobro" Type="Self.DetalleCobro" Multiplicity="*" />
           <ReferentialConstraint>
@@ -342,7 +406,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EstadoSer__CodCo__46E78A0C">
+        <Association Name="FK__EstadoSer__CodCo__398D8EEE">
           <End Role="Contrato" Type="Self.Contrato" Multiplicity="1" />
           <End Role="EstadoServicio" Type="Self.EstadoServicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -354,7 +418,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Lectura__CodMedi__4BAC3F29">
+        <Association Name="FK__Lectura__CodMedi__3C69FB99">
           <End Role="Medidor" Type="Self.Medidor" Multiplicity="1" />
           <End Role="Lectura" Type="Self.Lectura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -366,7 +430,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Lectura__CodPeri__4CA06362">
+        <Association Name="FK__Lectura__CodPeri__3D5E1FD2">
           <End Role="Periodo" Type="Self.Periodo" Multiplicity="1" />
           <End Role="Lectura" Type="Self.Lectura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -402,7 +466,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario__CodTipo__117F9D94">
+        <Association Name="FK__Usuario__CodTipo__1920BF5C">
           <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -414,7 +478,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsuarioPr__CodPr__300424B4">
+        <Association Name="FK__UsuarioPr__CodPr__2A4B4B5E">
           <End Role="Privilegio" Type="Self.Privilegio" Multiplicity="1" />
           <End Role="UsuarioPrivilegio" Type="Self.UsuarioPrivilegio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -426,7 +490,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsuarioPr__CodUs__2F10007B">
+        <Association Name="FK__UsuarioPr__CodUs__29572725">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="UsuarioPrivilegio" Type="Self.UsuarioPrivilegio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -438,7 +502,69 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SISMAModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Barrio" EntityType="Self.Barrio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calle" EntityType="Self.Calle" Schema="dbo" store:Type="Tables" />
@@ -458,67 +584,67 @@
           <EntitySet Name="Transaccion" EntityType="Self.Transaccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsuarioPrivilegio" EntityType="Self.UsuarioPrivilegio" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Bitacora__CodUsu__38996AB5" Association="Self.FK__Bitacora__CodUsu__38996AB5">
+          <AssociationSet Name="FK__Bitacora__CodUsu__2F10007B" Association="Self.FK__Bitacora__CodUsu__2F10007B">
             <End Role="Transaccion" EntitySet="Transaccion" />
             <End Role="Bitacora" EntitySet="Bitacora" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bitacora__CodUsu__398D8EEE" Association="Self.FK__Bitacora__CodUsu__398D8EEE">
+          <AssociationSet Name="FK__Bitacora__CodUsu__300424B4" Association="Self.FK__Bitacora__CodUsu__300424B4">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Bitacora" EntitySet="Bitacora" />
           </AssociationSet>
-          <AssociationSet Name="FK__Calle__CodBarrio__0519C6AF" Association="Self.FK__Calle__CodBarrio__0519C6AF">
+          <AssociationSet Name="FK__Calle__CodBarrio__1273C1CD" Association="Self.FK__Calle__CodBarrio__1273C1CD">
             <End Role="Barrio" EntitySet="Barrio" />
             <End Role="Calle" EntitySet="Calle" />
           </AssociationSet>
-          <AssociationSet Name="FK__CobroServ__codCo__52593CB8" Association="Self.FK__CobroServ__codCo__52593CB8">
+          <AssociationSet Name="FK__CobroServ__codCo__4222D4EF" Association="Self.FK__CobroServ__codCo__4222D4EF">
             <End Role="Contrato" EntitySet="Contrato" />
             <End Role="CobroServicio" EntitySet="CobroServicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__CobroServ__CodLe__534D60F1" Association="Self.FK__CobroServ__CodLe__534D60F1">
+          <AssociationSet Name="FK__CobroServ__CodLe__4316F928" Association="Self.FK__CobroServ__CodLe__4316F928">
             <End Role="Lectura" EntitySet="Lectura" />
             <End Role="CobroServicio" EntitySet="CobroServicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__CobroServ__CodUs__5165187F" Association="Self.FK__CobroServ__CodUs__5165187F">
+          <AssociationSet Name="FK__CobroServ__CodUs__412EB0B6" Association="Self.FK__CobroServ__CodUs__412EB0B6">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="CobroServicio" EntitySet="CobroServicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Contrato__CodCal__3F466844" Association="Self.FK__Contrato__CodCal__3F466844">
+          <AssociationSet Name="FK__Contrato__CodCal__33D4B598" Association="Self.FK__Contrato__CodCal__33D4B598">
             <End Role="Calle" EntitySet="Calle" />
             <End Role="Contrato" EntitySet="Contrato" />
           </AssociationSet>
-          <AssociationSet Name="FK__Contrato__CodCat__403A8C7D" Association="Self.FK__Contrato__CodCat__403A8C7D">
+          <AssociationSet Name="FK__Contrato__CodCat__34C8D9D1" Association="Self.FK__Contrato__CodCat__34C8D9D1">
             <End Role="CatServicio" EntitySet="CatServicio" />
             <End Role="Contrato" EntitySet="Contrato" />
           </AssociationSet>
-          <AssociationSet Name="FK__Contrato__CodSoc__3E52440B" Association="Self.FK__Contrato__CodSoc__3E52440B">
+          <AssociationSet Name="FK__Contrato__CodSoc__32E0915F" Association="Self.FK__Contrato__CodSoc__32E0915F">
             <End Role="Medidor" EntitySet="Medidor" />
             <End Role="Contrato" EntitySet="Contrato" />
           </AssociationSet>
-          <AssociationSet Name="FK__Contrato__CodSoc__4222D4EF" Association="Self.FK__Contrato__CodSoc__4222D4EF">
+          <AssociationSet Name="FK__Contrato__CodSoc__36B12243" Association="Self.FK__Contrato__CodSoc__36B12243">
             <End Role="Socio" EntitySet="Socio" />
             <End Role="Contrato" EntitySet="Contrato" />
           </AssociationSet>
-          <AssociationSet Name="FK__Contrato__CodUsu__412EB0B6" Association="Self.FK__Contrato__CodUsu__412EB0B6">
+          <AssociationSet Name="FK__Contrato__CodUsu__35BCFE0A" Association="Self.FK__Contrato__CodUsu__35BCFE0A">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Contrato" EntitySet="Contrato" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetalleCo__CodCo__5812160E" Association="Self.FK__DetalleCo__CodCo__5812160E">
+          <AssociationSet Name="FK__DetalleCo__CodCo__45F365D3" Association="Self.FK__DetalleCo__CodCo__45F365D3">
             <End Role="CobroServicio" EntitySet="CobroServicio" />
             <End Role="DetalleCobro" EntitySet="DetalleCobro" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetalleCo__CodSe__59063A47" Association="Self.FK__DetalleCo__CodSe__59063A47">
+          <AssociationSet Name="FK__DetalleCo__CodSe__46E78A0C" Association="Self.FK__DetalleCo__CodSe__46E78A0C">
             <End Role="Servicio" EntitySet="Servicio" />
             <End Role="DetalleCobro" EntitySet="DetalleCobro" />
           </AssociationSet>
-          <AssociationSet Name="FK__EstadoSer__CodCo__46E78A0C" Association="Self.FK__EstadoSer__CodCo__46E78A0C">
+          <AssociationSet Name="FK__EstadoSer__CodCo__398D8EEE" Association="Self.FK__EstadoSer__CodCo__398D8EEE">
             <End Role="Contrato" EntitySet="Contrato" />
             <End Role="EstadoServicio" EntitySet="EstadoServicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Lectura__CodMedi__4BAC3F29" Association="Self.FK__Lectura__CodMedi__4BAC3F29">
+          <AssociationSet Name="FK__Lectura__CodMedi__3C69FB99" Association="Self.FK__Lectura__CodMedi__3C69FB99">
             <End Role="Medidor" EntitySet="Medidor" />
             <End Role="Lectura" EntitySet="Lectura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Lectura__CodPeri__4CA06362" Association="Self.FK__Lectura__CodPeri__4CA06362">
+          <AssociationSet Name="FK__Lectura__CodPeri__3D5E1FD2" Association="Self.FK__Lectura__CodPeri__3D5E1FD2">
             <End Role="Periodo" EntitySet="Periodo" />
             <End Role="Lectura" EntitySet="Lectura" />
           </AssociationSet>
@@ -530,17 +656,33 @@
             <End Role="Servicio" EntitySet="Servicio" />
             <End Role="PrecioServicio" EntitySet="PrecioServicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuario__CodTipo__117F9D94" Association="Self.FK__Usuario__CodTipo__117F9D94">
+          <AssociationSet Name="FK__Usuario__CodTipo__1920BF5C" Association="Self.FK__Usuario__CodTipo__1920BF5C">
             <End Role="TipoUsuario" EntitySet="TipoUsuario" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
-          <AssociationSet Name="FK__UsuarioPr__CodPr__300424B4" Association="Self.FK__UsuarioPr__CodPr__300424B4">
+          <AssociationSet Name="FK__UsuarioPr__CodPr__2A4B4B5E" Association="Self.FK__UsuarioPr__CodPr__2A4B4B5E">
             <End Role="Privilegio" EntitySet="Privilegio" />
             <End Role="UsuarioPrivilegio" EntitySet="UsuarioPrivilegio" />
           </AssociationSet>
-          <AssociationSet Name="FK__UsuarioPr__CodUs__2F10007B" Association="Self.FK__UsuarioPr__CodUs__2F10007B">
+          <AssociationSet Name="FK__UsuarioPr__CodUs__29572725" Association="Self.FK__UsuarioPr__CodUs__29572725">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="UsuarioPrivilegio" EntitySet="UsuarioPrivilegio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -603,6 +745,7 @@
           <NavigationProperty Name="Lectura" Relationship="Self.FK__CobroServ__CodLe__4222D4EF" FromRole="CobroServicio" ToRole="Lectura" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__CobroServ__CodUs__403A8C7D" FromRole="CobroServicio" ToRole="Usuario" />
           <NavigationProperty Name="DetalleCobro" Relationship="Self.FK__DetalleCo__CodCo__44FF419A" FromRole="CobroServicio" ToRole="DetalleCobro" />
+          <Property Name="Pagado" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Contrato">
           <Key>
@@ -1091,7 +1234,117 @@
             <End Role="Privilegio" EntitySet="Privilegio" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
+          <EntitySet Name="C__MigrationHistory" EntityType="SISMAModel.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="SISMAModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="SISMAModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="SISMAModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="SISMAModel.AspNetUsers" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="SISMAModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="SISMAModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="SISMAModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="SISMAModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="SISMAModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="SISMAModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="SISMAModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="SISMAModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="SISMAModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="NameIdentifier" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="SISMAModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SISMAModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="SISMAModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SISMAModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="SISMAModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="SISMAModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1139,6 +1392,7 @@
           <EntitySetMapping Name="CobroServicio">
             <EntityTypeMapping TypeName="SISMAModel.CobroServicio">
               <MappingFragment StoreEntitySet="CobroServicio">
+                <ScalarProperty Name="Pagado" ColumnName="Pagado" />
                 <ScalarProperty Name="CodCobro" ColumnName="CodCobro" />
                 <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
@@ -1293,6 +1547,71 @@
             </EndProperty>
             <EndProperty Name="Usuario">
               <ScalarProperty Name="CodUsuario" ColumnName="CodUsuario" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="SISMAModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="SISMAModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="SISMAModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="SISMAModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="SISMAModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="NameIdentifier" ColumnName="NameIdentifier" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="SISMAModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

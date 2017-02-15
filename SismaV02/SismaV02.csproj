@@ -197,8 +197,32 @@
     <Compile Include="Migrations\201702080416481_InitialCreate.Designer.cs">
       <DependentUpon>201702080416481_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702101553491_Birthdate.cs" />
+    <Compile Include="Migrations\201702101553491_Birthdate.Designer.cs">
+      <DependentUpon>201702101553491_Birthdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702101608441_Birthdate1.cs" />
+    <Compile Include="Migrations\201702101608441_Birthdate1.Designer.cs">
+      <DependentUpon>201702101608441_Birthdate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702101654121_demo.cs" />
+    <Compile Include="Migrations\201702101654121_demo.Designer.cs">
+      <DependentUpon>201702101654121_demo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>SismaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaims.cs">
+      <DependentUpon>SismaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogins.cs">
+      <DependentUpon>SismaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>SismaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Barrio.cs">
       <DependentUpon>SismaModel.tt</DependentUpon>
     </Compile>
@@ -215,6 +239,9 @@
       <DependentUpon>SismaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Contrato.cs">
+      <DependentUpon>SismaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>SismaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DetalleCobro.cs">
@@ -1109,6 +1136,39 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\AdminLTE\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1165,11 +1225,14 @@
     <Content Include="Content\AdminLTE\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Content\AdminLTE\plugins\input-mask\phone-codes\phone-codes.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Cobro\Create.js" />
     <Content Include="Scripts\DataTableCustom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1330,6 +1393,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201702080416481_InitialCreate.resx">
       <DependentUpon>201702080416481_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702101553491_Birthdate.resx">
+      <DependentUpon>201702101553491_Birthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702101608441_Birthdate1.resx">
+      <DependentUpon>201702101608441_Birthdate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702101654121_demo.resx">
+      <DependentUpon>201702101654121_demo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

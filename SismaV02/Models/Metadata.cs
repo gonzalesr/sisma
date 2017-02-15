@@ -12,6 +12,10 @@ namespace SismaV02.Models
         [StringLength(50)]
         [Display(Name = "Barrio")]
         public string NomBarrio;
+
+        [StringLength(50)]
+        [Display(Name = "ddd")]
+        public string demo;
     }
 
     public class CalleMetadata
@@ -75,4 +79,15 @@ namespace SismaV02.Models
         //public virtual CatServicio CatServicio { get; set; }
         //public virtual Servicio Servicio { get; set; }
     }
+
+    //public class RegisterViewModelMetadata
+    //{
+    //    [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} caracteres de longitud.", MinimumLength = 6)]
+    //    [Display(Name = "Contraseña")]
+    //    public string Password { get; set; }
+
+    //    [Display(Name = "Confirmar Contraseña")]
+    //    [Compare("Password", ErrorMessage = "Las constraseñas no coinciden.")]
+    //    public string ConfirmPassword { get; set; }
+    //}
 }
